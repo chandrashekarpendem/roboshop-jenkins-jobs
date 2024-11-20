@@ -1,0 +1,16 @@
+- name: copy job.xml file
+  ansible.builtin.template:
+    src: job.xml
+    dest: /tmp/job.xml
+
+- name: create roboshop jenkins jobs
+  community.general.jenkins_jobs:
+    config: "{{ lookup('file', /tmp/job.xml}}"
+    name: {{item}}
+    url: http://172.31.41.63:8080
+    user: admin
+    password: "{{jenkins-password}}"
+  loop:
+    - frontend
+    - cart
+    - catalogue
