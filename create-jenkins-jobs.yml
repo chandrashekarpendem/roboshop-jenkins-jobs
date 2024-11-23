@@ -1,5 +1,6 @@
 - name: jenkins jobs creation
   hosts: all
   connection: local
+  become: yes
   roles:
     - jenkins
