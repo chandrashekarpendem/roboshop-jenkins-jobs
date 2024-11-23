@@ -5,5 +5,6 @@ pipeline_jobs:
   - {name: "shipping", dir: "CI_PIPELINE"}
   - {name: "payment", dir: "CI_PIPELINE"}
   - {name: "catalogue", dir: "CI_PIPELINE"}
+
 folders:
   - CI_PIPELINE
