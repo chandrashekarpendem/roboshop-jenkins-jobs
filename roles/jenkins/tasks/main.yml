@@ -8,7 +8,7 @@
   loop: "{{ folders }}"
 
 
-- name: include tasks from pipeline.yml
-  ansible.builtin.include_tasks: pipeline.yml
+- name: include tasks from s-pipeline.yml
+  ansible.builtin.include_tasks: m-pipeline.yml
   loop: "{{pipeline_jobs}}"
 
