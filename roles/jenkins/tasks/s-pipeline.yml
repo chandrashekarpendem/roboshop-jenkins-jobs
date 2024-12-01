@@ -1,7 +1,14 @@
+- name: Checking existing - {{item.dir}}/{{item.name}}
+  ansible.builtin.shell: java -jar /opt/jenkins-cli.jar -auth admin:{{jenkins_password}} -s http://172.31.47.227:8080 -webSocket get-job {{item.dir}}/{{item.name}}
+  register: out
+  ignore_errors: yes
+
+
 - name: copy job.xml file
   ansible.builtin.template:
     src: s-job.xml
     dest: /tmp/s-job.xml
+  when: out.rc == 3
 
 - name: Create a Roboshop jenkins job using basic authentication {{item.name}}
   community.general.jenkins_job:
@@ -10,4 +17,5 @@
     password: "{{jenkins_password}}"
     url: http://172.31.47.227:8080
     user: admin
+  when: out.rc == 3
 
