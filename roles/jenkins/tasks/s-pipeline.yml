@@ -1,5 +1,5 @@
 - name: Checking existing - {{item.dir}}/{{item.name}}
-  ansible.builtin.shell: java -jar /opt/jenkins-cli.jar -auth admin:{{jenkins_password}} -s http://172.31.47.227:8080 -webSocket get-job {{item.dir}}/{{item.name}}
+  ansible.builtin.shell: java -jar /opt/jenkins-cli.jar -auth admin:{{jenkins_password}} -s http://172.31.47.227:80 -webSocket get-job {{item.dir}}/{{item.name}}
   register: out
   ignore_errors: yes
 
@@ -15,7 +15,7 @@
     config: "{{ lookup('file', '/tmp/s-job.xml') }}"
     name: "{{item.dir}}/{{item.name}}"
     password: "{{jenkins_password}}"
-    url: http://172.31.47.227:8080
+    url: http://172.31.47.227:80
     user: admin
   when: out.rc == 3
 
