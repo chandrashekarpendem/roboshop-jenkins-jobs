@@ -14,3 +14,4 @@ folders:
 sbranch_pipeline_jobs:
   - {name: "roboshop-infra", dir: "roboshop_infra"}
   - {name: "roboshop-ansible", dir: "Continuous-Deployment"}
+  - {name: "roboshop-helm-chart", dir: "Continuous-Deployment"}
